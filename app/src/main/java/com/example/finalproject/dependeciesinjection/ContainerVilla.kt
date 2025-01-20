@@ -24,7 +24,7 @@ interface AppContainer {
     val reviewRepository: ReviewRepository
 }
 
-class PelangganContainer : AppContainer {
+class ManageVillaContainer : AppContainer {
     private val baseUrl = "http://10.0.2.2:3000/"
     private val json = Json { ignoreUnknownKeys = true }
     private val retrofit: Retrofit = Retrofit.Builder()
