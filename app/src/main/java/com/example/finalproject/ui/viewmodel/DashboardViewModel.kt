@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import java.io.IOException
 
 sealed class DashboardUiState{
-    data class Success(val mahasiswa: List<Villa>) : DashboardUiState()
+    data class Success(val villa: List<Villa>) : DashboardUiState()
     object Error : DashboardUiState()
     object Loading : DashboardUiState()
 }
@@ -20,6 +20,9 @@ sealed class DashboardUiState{
 class DashboardViewModel(private val villa: VillaRepository): ViewModel(){
     var villaUiState : DashboardUiState by mutableStateOf(DashboardUiState.Loading)
         private set
+
+    val villaRepo: VillaRepository
+        get() = villa
 
     init {
         getVilla()
