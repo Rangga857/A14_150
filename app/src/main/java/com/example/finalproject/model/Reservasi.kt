@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Reservasi(
     @SerialName("id_reservasi")
-    val idReservasi: Int,
+    val idReservasi: Int? = null,
 
     @SerialName("nama_villa")
     val namaVilla: String,
@@ -42,7 +42,7 @@ data class ReservasiResponse(
 )
 
 // Model untuk membuat atau memperbarui Reservasi
-@Serializable
+/*@Serializable
 data class ReservasiRequest(
     @SerialName("nama_villa")
     val namaVilla: String,
@@ -58,5 +58,5 @@ data class ReservasiRequest(
 
     @SerialName("jumlah_kamar")
     val jumlahKamar: Int
-)
+)*/
 

@@ -1,7 +1,7 @@
 package com.example.finalproject.service
 
+import com.example.finalproject.model.Pelanggan
 import com.example.finalproject.model.PelangganDetailResponse
-import com.example.finalproject.model.PelangganRequest
 import com.example.finalproject.model.PelangganResponse
 import retrofit2.Response
 import retrofit2.http.Body
@@ -28,11 +28,11 @@ interface PelangganService {
 
     // Menambahkan pelanggan baru
     @POST("pelanggan/tambah")
-    suspend fun insertPelanggan(@Body pelanggan: PelangganRequest)
+    suspend fun insertPelanggan(@Body pelanggan: Pelanggan)
 
     // Mengupdate data pelanggan berdasarkan id_pelanggan
     @PUT("pelanggan/{id_pelanggan}")
-    suspend fun updatePelanggan(@Path("id_pelanggan") idPelanggan: Int, @Body pelanggan: PelangganRequest)
+    suspend fun updatePelanggan(@Path("id_pelanggan") idPelanggan: Int, @Body pelanggan: Pelanggan)
 
     // Menghapus pelanggan berdasarkan id_pelanggan
     @DELETE("pelanggan/{id_pelanggan}")

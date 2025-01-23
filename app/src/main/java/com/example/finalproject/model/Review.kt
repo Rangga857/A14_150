@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Review(
     @SerialName("id_review")
-    val idReview: Int,
+    val idReview: Int? = null,
 
     @SerialName("id_reservasi")
     val idReservasi: Int,
@@ -33,17 +33,4 @@ data class ReviewResponse(
     val status: Boolean,
     val message: String,
     val data: List<Review>
-)
-
-// Model untuk membuat atau memperbarui Review
-@Serializable
-data class ReviewRequest(
-    @SerialName("id_reservasi")
-    val idReservasi: Int,
-
-    @SerialName("nilai")
-    val nilai: String,
-
-    @SerialName("komentar")
-    val komentar: String
 )

@@ -1,14 +1,13 @@
 package com.example.finalproject.repository
 
 import com.example.finalproject.model.Pelanggan
-import com.example.finalproject.model.PelangganRequest
 import com.example.finalproject.service.PelangganService
 import java.io.IOException
 
 interface PelangganRepository {
     suspend fun getPelanggan(): List<Pelanggan>
-    suspend fun insertPelanggan(pelanggan: PelangganRequest)
-    suspend fun updatePelanggan(idPelanggan: Int, pelanggan: PelangganRequest)
+    suspend fun insertPelanggan(pelanggan: Pelanggan)
+    suspend fun updatePelanggan(idPelanggan: Int, pelanggan: Pelanggan)
     suspend fun deletePelanggan(idPelanggan: Int)
     suspend fun getPelangganById(idPelanggan: Int): Pelanggan
 }
@@ -17,11 +16,11 @@ class NetworkPelangganRepository(
     private val pelangganApiService: PelangganService
 ) : PelangganRepository {
 
-    override suspend fun insertPelanggan(pelanggan: PelangganRequest) {
+    override suspend fun insertPelanggan(pelanggan: Pelanggan) {
         pelangganApiService.insertPelanggan(pelanggan)
     }
 
-    override suspend fun updatePelanggan(idPelanggan: Int, pelanggan: PelangganRequest) {
+    override suspend fun updatePelanggan(idPelanggan: Int, pelanggan: Pelanggan) {
 
         pelangganApiService.updatePelanggan(idPelanggan, pelanggan)
     }

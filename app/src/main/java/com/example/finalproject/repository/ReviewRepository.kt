@@ -1,14 +1,13 @@
 package com.example.finalproject.repository
 
 import com.example.finalproject.model.Review
-import com.example.finalproject.model.ReviewRequest
 import com.example.finalproject.service.ReviewService
 import java.io.IOException
 
 interface ReviewRepository {
     suspend fun getReview(): List<Review>
-    suspend fun insertReview(review: ReviewRequest)
-    suspend fun updateReview(idReview: Int, review: ReviewRequest)
+    suspend fun insertReview(review: Review)
+    suspend fun updateReview(idReview: Int, review: Review)
     suspend fun deleteReview(idReview: Int)
     suspend fun getReviewById(idReview: Int): Review
 }
@@ -17,10 +16,10 @@ class NetworkReviewRepository(
     private val reviewApiService: ReviewService
 ) : ReviewRepository {
 
-    override suspend fun insertReview(review: ReviewRequest) {
+    override suspend fun insertReview(review: Review) {
         reviewApiService.insertReview(review)
     }
-    override suspend fun updateReview(idReview: Int, review: ReviewRequest) {
+    override suspend fun updateReview(idReview: Int, review: Review) {
         reviewApiService.updateReview(idReview, review)
     }
 

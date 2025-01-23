@@ -1,7 +1,7 @@
 package com.example.finalproject.service
 
+import com.example.finalproject.model.Review
 import com.example.finalproject.model.ReviewDetailResponse
-import com.example.finalproject.model.ReviewRequest
 import com.example.finalproject.model.ReviewResponse
 import retrofit2.Response
 import retrofit2.http.Body
@@ -28,11 +28,11 @@ interface ReviewService {
 
     // Menambahkan review baru
     @POST("review/tambah")
-    suspend fun insertReview(@Body review: ReviewRequest)
+    suspend fun insertReview(@Body review: Review)
 
     // Mengupdate data review berdasarkan id_review
     @PUT("review/{id_review}")
-    suspend fun updateReview(@Path("id_review") idReview: Int, @Body review: ReviewRequest)
+    suspend fun updateReview(@Path("id_review") idReview: Int, @Body review: Review)
 
     // Menghapus review berdasarkan id_review
     @DELETE("review/{id_review}")

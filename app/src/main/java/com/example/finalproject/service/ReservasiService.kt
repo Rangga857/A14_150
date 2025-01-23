@@ -1,7 +1,8 @@
 package com.example.finalproject.service
 
+import com.example.finalproject.model.Reservasi
 import com.example.finalproject.model.ReservasiDetailResponse
-import com.example.finalproject.model.ReservasiRequest
+//import com.example.finalproject.model.ReservasiRequest
 import com.example.finalproject.model.ReservasiResponse
 import retrofit2.Response
 import retrofit2.http.*
@@ -22,11 +23,11 @@ interface ReservasiService {
 
     // Menambahkan reservasi baru
     @POST("reservasi/tambah")
-    suspend fun insertReservasi(@Body reservasi: ReservasiRequest)
+    suspend fun insertReservasi(@Body reservasi: Reservasi)
 
     // Mengupdate data reservasi berdasarkan id_reservasi
     @PUT("reservasi/{id_reservasi}")
-    suspend fun updateReservasi(@Path("id_reservasi") idReservasi: Int, @Body reservasi: ReservasiRequest)
+    suspend fun updateReservasi(@Path("id_reservasi") idReservasi: Int, @Body reservasi: Reservasi)
 
     // Menghapus reservasi berdasarkan id_reservasi
     @DELETE("reservasi/{id_reservasi}")
