@@ -7,18 +7,8 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Pelanggan(
     @SerialName("id_pelanggan")
-    val idPelanggan: Int,
+    val idPelanggan: Int? = null,
 
-    @SerialName("nama_pelanggan")
-    val namaPelanggan: String,
-
-    @SerialName("no_hp")
-    val noHp: String
-)
-
-//insert & edit data ke server
-@Serializable
-data class PelangganRequest(
     @SerialName("nama_pelanggan")
     val namaPelanggan: String,
 
