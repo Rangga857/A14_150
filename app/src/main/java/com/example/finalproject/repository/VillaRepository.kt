@@ -24,13 +24,13 @@ class NetworkVillaRepository(
     override suspend fun updateVilla(idVilla: String, villa: Villa) {
         villaApiService.updateVilla(idVilla, villa)
     }
+
     override suspend fun deleteVilla(idVilla: String) {
         try {
             val response = villaApiService.deleteVilla(idVilla)
             if (!response.isSuccessful) {
                 throw IOException("Failed to delete Villa. HTTP Status code: ${response.code()}")
             } else {
-                response.message()
                 println(response.message())
             }
         } catch (e: Exception) {

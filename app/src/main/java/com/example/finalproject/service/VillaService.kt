@@ -35,6 +35,6 @@ interface VillaService {
     suspend fun updateVilla(@Path("id_villa") idVilla: String, @Body villa: Villa)
 
     // Menghapus villa berdasarkan id_villa
-    @DELETE("{villa/id_villa}")
+    @DELETE("villa/{id_villa}")
     suspend fun deleteVilla(@Path("id_villa") idVilla: String): Response<Void>
 }
