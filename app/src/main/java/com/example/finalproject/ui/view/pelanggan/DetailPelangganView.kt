@@ -1,5 +1,6 @@
 package com.example.finalproject.ui.view.pelanggan
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -34,9 +36,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.finalproject.model.Pelanggan
 import com.example.finalproject.ui.viewmodel.pelangganviewmodel.DetailPelangganUiState
@@ -69,11 +74,35 @@ fun DetailViewPelanggan(
             }
         }
     ) { innerPadding ->
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .offset(y = (-600).dp)
+                .clip(RoundedCornerShape(bottomEnd = 60.dp, bottomStart = 60.dp))
+                .background(Color(0xFF003153)),
+            contentAlignment = Alignment.BottomCenter
+        ) {
+            Text(
+                text = "Detail Pelanggan",
+                fontWeight = FontWeight.Bold,
+                fontSize = 25.sp,
+                color = Color.White,
+                modifier = Modifier.padding(bottom = 150.dp)
+            )
+            Text(
+                text = "Silahkan cek untuk detail pelanggan yang anda pilih:",
+                fontWeight = FontWeight.Medium,
+                fontSize = 12.sp,
+                color = Color.White,
+                modifier = Modifier.padding(bottom = 130.dp)
+            )
+        }
         DetailPelangganContent(
             pelangganUiState = pelangganuiState,
             modifier = Modifier
                 .padding(innerPadding)
-                .fillMaxSize(),
+                .fillMaxSize()
+                .padding(top = 60.dp, start = 20.dp, end = 20.dp),
             onDeleteClick = {
                 detailPelangganViewModel.deletePelanggan(idPelanggan)
                 navigateBack()
