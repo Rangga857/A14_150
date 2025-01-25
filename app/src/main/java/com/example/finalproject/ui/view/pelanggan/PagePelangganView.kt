@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
@@ -51,8 +52,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.finalproject.R
 import com.example.finalproject.model.Pelanggan
@@ -96,11 +99,35 @@ fun InsertPelangganView(
             .background(Color(0xFF003153)),
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
     ) { padding ->
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .offset(y = (30).dp)
+                .clip(RoundedCornerShape(topStart = 60.dp, topEnd = 60.dp))
+                .background(Color(0xFF003153)),
+            contentAlignment = Alignment.BottomCenter
+        ) {
+            Text(
+                text = "Insert Reservasi",
+                fontWeight = FontWeight.Bold,
+                fontSize = 25.sp,
+                color = Color.White,
+                modifier = Modifier.padding(bottom = 750.dp)
+            )
+            Text(
+                text = "Silahkan masukkan data dengan sesuai dan tekan tombol simpan!",
+                fontWeight = FontWeight.Medium,
+                fontSize = 12.sp,
+                color = Color.White,
+                modifier = Modifier.padding(bottom = 720.dp)
+            )
+        }
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
-                .padding(16.dp),
+                .padding(16.dp)
+                .padding(top = 100.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -117,12 +144,6 @@ fun InsertPelangganView(
                     verticalArrangement = Arrangement.spacedBy(12.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text(
-                        text = "Insert Pelanggan",
-                        style = MaterialTheme.typography.headlineSmall,
-                        color = Color(0xFF003153), // Warna teks biru tua
-                        modifier = Modifier.padding(bottom = 16.dp)
-                    )
                     InsertBodyPelanggan(
                         pelangganuiState = pelangganuiState,
                         onValueChange = { updateEvent ->
@@ -142,8 +163,15 @@ fun InsertPelangganView(
             Spacer(modifier = Modifier.padding(top = 20.dp))
             Box(
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
+                contentAlignment = Alignment.TopCenter
             ) {
+                Text(
+                    text = "Di bawah ini merupakan data data pelanggan:",
+                    fontWeight = FontWeight.Medium,
+                    fontSize = 12.sp,
+                    color = Color.White,
+                )
                 PagePelangganStatus(
                     pagePelangganUiState = viewModel.pelangganUiState,
                     onDetailClick = onDetailClick,
@@ -165,6 +193,7 @@ fun InsertBodyPelanggan(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
         FormPelanggan(
             insertPelangganUiEvent = pelangganuiState.insertPelangganUiEvent,
             onValueChange = onValueChange,
