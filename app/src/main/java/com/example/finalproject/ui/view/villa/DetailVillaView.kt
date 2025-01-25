@@ -1,6 +1,7 @@
 package com.example.finalproject.ui.view.villa
 
 import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -79,11 +80,35 @@ fun DetailView(
     Scaffold(
         modifier = Modifier,
     ) { innerPadding ->
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .offset(y = (-600).dp)
+                .clip(RoundedCornerShape(bottomEnd = 100.dp, bottomStart = 100.dp))
+                .background(Color(0xFF003153)),
+            contentAlignment = Alignment.BottomCenter
+        ) {
+            Text(
+                text = "Detail Villa",
+                fontWeight = FontWeight.Bold,
+                fontSize = 25.sp,
+                color = Color.White,
+                modifier = Modifier.padding(bottom = 150.dp)
+            )
+            Text(
+                text = "Silahkan cek untuk detail villa yang anda pilih:",
+                fontWeight = FontWeight.Medium,
+                fontSize = 12.sp,
+                color = Color.White,
+                modifier = Modifier.padding(bottom = 130.dp)
+            )
+        }
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .padding(16.dp),
+                .padding(16.dp)
+                .padding(top = 40.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
             horizontalAlignment = Alignment.Start
         ) {
@@ -157,9 +182,8 @@ fun DetailVillaContent(
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(200.dp)
+                            .height(150.dp)
                             .clip(RoundedCornerShape(8.dp))
-                            .border(1.dp, Color.Gray, RoundedCornerShape(8.dp))
                             .padding(8.dp)
                     ) {
                         LazyColumn(
