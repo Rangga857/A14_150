@@ -11,7 +11,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.finalproject.navigation.PengelolaHalaman
 import com.example.finalproject.ui.theme.FinalProjectTheme
+import com.example.finalproject.ui.view.pelanggan.DetailViewPelanggan
+import com.example.finalproject.ui.view.villa.DetailView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,8 +23,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             FinalProjectTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    PengelolaHalaman(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
