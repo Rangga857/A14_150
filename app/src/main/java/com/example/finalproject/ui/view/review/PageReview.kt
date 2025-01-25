@@ -11,11 +11,13 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Card
@@ -38,8 +40,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.finalproject.R
 import com.example.finalproject.model.Reservasi
@@ -51,8 +55,6 @@ import com.example.finalproject.ui.viewmodel.reviewviewmodel.PageReviewUiState
 import com.example.finalproject.ui.viewmodel.reviewviewmodel.PageReviewViewModel
 import com.example.finalproject.ui.viewmodel.reviewviewmodel.ReviewPenyediaViewModel
 
-
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PageReviewScreen(
     modifier: Modifier = Modifier,
@@ -75,25 +77,30 @@ fun PageReviewScreen(
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Tambah Review")
             }
         },
-        topBar = {
-            TopAppBar(
-                title = {
-                    Box(
-                        modifier = Modifier.fillMaxWidth(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text = "Daftar Review Terkait Villa",
-                            style = MaterialTheme.typography.titleLarge.copy(color = Color.White)
-                        )
-                    }
-                },
-                colors = TopAppBarDefaults.smallTopAppBarColors(
-                    containerColor = Color(0xFF003153)
-                )
+    ) { innerPadding ->
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .offset(y = (-600).dp)
+                .clip(RoundedCornerShape(bottomEnd = 60.dp, bottomStart = 60.dp))
+                .background(Color(0xFF003153)),
+            contentAlignment = Alignment.BottomCenter
+        ) {
+            Text(
+                text = "Daftar Review",
+                fontWeight = FontWeight.Bold,
+                fontSize = 25.sp,
+                color = Color.White,
+                modifier = Modifier.padding(bottom = 150.dp)
+            )
+            Text(
+                text = "Di bawah ini merupakan data data review terkait villa:",
+                fontWeight = FontWeight.Medium,
+                fontSize = 12.sp,
+                color = Color.White,
+                modifier = Modifier.padding(bottom = 130.dp)
             )
         }
-    ) { innerPadding ->
         PageReviewStatus(
             pageReviewUiState = viewModel.reviewiUiState,
             modifier = Modifier.padding(innerPadding),
@@ -188,7 +195,8 @@ fun ReviewCard(
     modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = modifier,
+        modifier = modifier
+            .padding(top = 70.dp),
         shape = MaterialTheme.shapes.medium,
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
