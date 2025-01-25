@@ -6,10 +6,10 @@ import java.io.IOException
 
 interface ReviewRepository {
     suspend fun getReview(): List<Review>
+    suspend fun getReviewById(idReview: Int): Review
     suspend fun insertReview(review: Review)
     suspend fun updateReview(idReview: Int, review: Review)
     suspend fun deleteReview(idReview: Int)
-    suspend fun getReviewById(idReview: Int): Review
 }
 
 class NetworkReviewRepository(
@@ -20,7 +20,12 @@ class NetworkReviewRepository(
         reviewApiService.insertReview(review)
     }
     override suspend fun updateReview(idReview: Int, review: Review) {
-        reviewApiService.updateReview(idReview, review)
+        try {
+            val response = reviewApiService.updateReview(idReview, review)
+            println("API response: $response")
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     override suspend fun deleteReview(idReview: Int) {
