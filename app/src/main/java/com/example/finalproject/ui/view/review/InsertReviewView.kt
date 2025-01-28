@@ -81,7 +81,7 @@ fun InsertReviewView(
             contentAlignment = Alignment.BottomCenter
         ) {
             Text(
-                text = "Insert Reservasi",
+                text = "Insert Review",
                 fontWeight = FontWeight.Bold,
                 fontSize = 25.sp,
                 color = Color.White,
