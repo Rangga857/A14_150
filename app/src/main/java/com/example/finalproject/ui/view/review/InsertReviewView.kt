@@ -184,7 +184,7 @@ fun FormReview(
     Column(
         modifier = modifier.fillMaxWidth()
     ) {
-        Text(text = "Masukkan ID Villa:")
+        Text(text = "Masukkan ID Reservasi:")
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             value = insertReviewUiEvent.reservasi.toString(),
